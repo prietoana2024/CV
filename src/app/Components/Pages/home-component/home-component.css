@@ -1,0 +1,23 @@
+.fade-wrapper {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-wrapper.fade-out {
+  opacity: 0;
+}
+
+.home-content {
+  text-align: center;
+  padding: 4rem;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.main-content {
+  text-align: center;
+  padding: 4rem;
+}
