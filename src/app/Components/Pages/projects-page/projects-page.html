@@ -1,0 +1,48 @@
+<section class="page-hero container">
+  <span class="eyebrow">Portafolio</span>
+  <h1>Proyectos que muestran cómo pienso y cómo construyo.</h1>
+  <p class="page-hero__lead">
+    Desde marketplaces con logística propia hasta pipelines de facturación con IA. Cada proyecto
+    incluye el problema real que resolvió y el stack usado — el video demo de cada uno llega pronto.
+  </p>
+</section>
+
+<section class="filters container">
+  <button
+    type="button"
+    class="filter-pill"
+    [class.is-active]="activeFilter() === 'all'"
+    (click)="setFilter('all')"
+  >Todos</button>
+
+  @for (cat of categories; track cat.id) {
+    <button
+      type="button"
+      class="filter-pill"
+      [class.is-active]="activeFilter() === cat.id"
+      (click)="setFilter(cat.id)"
+    >{{ cat.label }}</button>
+  }
+</section>
+
+<section class="section section-border-top">
+  <div class="container project-grid">
+    @for (project of filteredProjects(); track project.slug) {
+      <a class="project-card" [routerLink]="['/proyectos', project.slug]">
+        <app-media-placeholder kind="video" ratio="16 / 11"></app-media-placeholder>
+        <div class="project-card__body">
+          <span class="project-card__meta">{{ project.client }} · {{ project.period }}</span>
+          <h2>{{ project.title }}</h2>
+          <p>{{ project.summary }}</p>
+          <div class="project-card__tags">
+            @for (tech of project.stack.slice(0, 3); track tech) {
+              <span class="tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      </a>
+    } @empty {
+      <p class="project-grid__empty">No hay proyectos en esta categoría todavía.</p>
+    }
+  </div>
+</section>

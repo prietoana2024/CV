@@ -1,0 +1,66 @@
+<section class="page-hero container">
+  <span class="eyebrow">Contacto</span>
+  <h1>Cuéntame qué necesita construir tu equipo.</h1>
+  <p class="page-hero__lead">
+    Respondo personalmente. Si tienes un problema de negocio que se resuelve con software —o
+    con software más IA— este es el lugar para empezar la conversación.
+  </p>
+</section>
+
+<section class="section section-border-top">
+  <div class="container contact-grid">
+
+    <form class="contact-form" (ngSubmit)="submit()" #contactForm="ngForm">
+      <div class="field">
+        <label for="name">Nombre</label>
+        <input id="name" name="name" type="text" required [(ngModel)]="model.name" placeholder="Tu nombre" />
+      </div>
+
+      <div class="field">
+        <label for="company">Empresa</label>
+        <input id="company" name="company" type="text" [(ngModel)]="model.company" placeholder="Nombre de tu empresa" />
+      </div>
+
+      <div class="field">
+        <label for="email">Correo</label>
+        <input id="email" name="email" type="email" required [(ngModel)]="model.email" placeholder="tu@empresa.com" />
+      </div>
+
+      <div class="field">
+        <label for="message">Cuéntame sobre el proyecto</label>
+        <textarea id="message" name="message" rows="5" required [(ngModel)]="model.message" placeholder="Qué problema quieres resolver..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-solid" [disabled]="contactForm.invalid">Enviar mensaje</button>
+
+      @if (sent()) {
+        <p class="contact-form__note">Se abrió tu cliente de correo con el mensaje listo para enviar.</p>
+      }
+    </form>
+
+    <aside class="contact-info">
+      <div class="contact-info__block">
+        <span class="contact-info__label">Correo</span>
+        <a href="mailto:prietoanasoftware@gmail.com">prietoanasoftware@gmail.com</a>
+      </div>
+
+      <div class="contact-info__block">
+        <span class="contact-info__label">Redes</span>
+        <a href="https://www.linkedin.com/in/ana-prieto-development" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/prietoana2024" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+
+      <div class="contact-info__block">
+        <span class="contact-info__label">Ubicación</span>
+        <span>Medellín, Colombia</span>
+        <span>Disponible remoto / híbrido</span>
+      </div>
+
+      <div class="contact-info__block">
+        <span class="contact-info__label">Disponibilidad</span>
+        <span class="eyebrow">Abierta a nuevos proyectos</span>
+      </div>
+    </aside>
+
+  </div>
+</section>

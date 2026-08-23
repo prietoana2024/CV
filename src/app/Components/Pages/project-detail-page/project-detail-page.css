@@ -1,0 +1,121 @@
+.detail__hero {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: 2.5rem;
+}
+
+.detail__back {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-bottom: 2rem;
+}
+
+.detail__back:hover { color: var(--ink); }
+
+.detail__hero h1 {
+  margin-top: 1rem;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  max-width: 22ch;
+}
+
+.detail__summary {
+  margin-top: 1.5rem;
+  max-width: 56ch;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+}
+
+.detail__facts {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+}
+
+.detail__facts dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.detail__facts dd { margin-top: 0.4rem; font-weight: 500; }
+
+.detail__media { margin-bottom: 1rem; }
+
+.detail__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.detail__col h2 {
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+.detail__col h2:not(:first-child) { margin-top: 2rem; }
+
+.detail__col p {
+  margin-top: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.detail__list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail__list li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.detail__list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.5em;
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.detail__stack {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.detail__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.detail__next-link {
+  display: block;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+.detail__next-link h2 {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  transition: color 0.2s ease;
+}
+
+.detail__next-link:hover h2 { color: var(--accent); }
+
+@media (max-width: 860px) {
+  .detail__grid { grid-template-columns: 1fr; }
+  .detail__gallery { grid-template-columns: 1fr 1fr; }
+}

@@ -1,0 +1,83 @@
+@if (project(); as p) {
+  <article class="detail">
+    <section class="detail__hero container">
+      <a class="detail__back" routerLink="/proyectos">← Todos los proyectos</a>
+      <span class="eyebrow">{{ p.client }} · {{ p.period }}</span>
+      <h1>{{ p.title }}</h1>
+      <p class="detail__summary">{{ p.summary }}</p>
+
+      <dl class="detail__facts">
+        <div>
+          <dt>Rol</dt>
+          <dd>{{ p.role }}</dd>
+        </div>
+        <div>
+          <dt>Cliente</dt>
+          <dd>{{ p.client }}</dd>
+        </div>
+        <div>
+          <dt>Periodo</dt>
+          <dd>{{ p.period }}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="container detail__media">
+      <app-media-placeholder kind="video" ratio="16 / 9"></app-media-placeholder>
+    </section>
+
+    <section class="section section-border-top">
+      <div class="container detail__grid">
+        <div class="detail__col">
+          <h2>Objetivo</h2>
+          <p>{{ p.objective }}</p>
+
+          <h2>El reto</h2>
+          <p>{{ p.challenge }}</p>
+        </div>
+
+        <div class="detail__col">
+          <h2>Aportes clave</h2>
+          <ul class="detail__list">
+            @for (item of p.contributions; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-border-top">
+      <div class="container">
+        <h2>Stack técnico</h2>
+        <div class="detail__stack">
+          @for (tech of p.stack; track tech) {
+            <span class="tag">{{ tech }}</span>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-border-top">
+      <div class="container detail__gallery">
+        <app-media-placeholder kind="image" ratio="4 / 3"></app-media-placeholder>
+        <app-media-placeholder kind="image" ratio="4 / 3"></app-media-placeholder>
+        <app-media-placeholder kind="image" ratio="4 / 3"></app-media-placeholder>
+      </div>
+    </section>
+
+    @if (nextProject(); as next) {
+      <section class="section-border-top detail__next">
+        <a class="container detail__next-link" [routerLink]="['/proyectos', next.slug]">
+          <span class="eyebrow">Siguiente proyecto</span>
+          <h2>{{ next.title }} →</h2>
+        </a>
+      </section>
+    }
+  </article>
+} @else {
+  <section class="container section">
+    <p>Proyecto no encontrado.</p>
+    <a class="btn" routerLink="/proyectos">← Volver a proyectos</a>
+  </section>
+}

@@ -1,8 +1,113 @@
 @if (isBrowser && showAnimation) {
-  <app-three-scene></app-three-scene>
+  <div class="intro">
+    <app-three-scene></app-three-scene>
+    <button type="button" class="intro__skip" (click)="skipIntro()">Saltar intro</button>
+  </div>
 } @else {
-  <div class="main-content">
-    <h1>Bienvenido</h1>
-    <p>Contenido principal del Home</p>
+  <div class="home">
+
+    <!-- HERO -->
+    <section class="hero container">
+      <span class="eyebrow">Desarrolladora Full Stack · Medellín, Colombia</span>
+      <h1 class="hero__title">
+        Construyo software<br />
+        que mueve negocios<br />
+        y lo conecto con&nbsp;IA.
+      </h1>
+      <p class="hero__lead">
+        Diseño y desarrollo aplicaciones web, APIs y automatizaciones con inteligencia artificial
+        para empresas que necesitan resolver problemas reales, no solo entregar código.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn-solid" routerLink="/proyectos">Ver proyectos</a>
+        <a class="btn" routerLink="/contacto">Hablemos de tu proyecto →</a>
+      </div>
+
+      <dl class="hero__stats">
+        <div>
+          <dt>+4</dt>
+          <dd>años construyendo software en producción</dd>
+        </div>
+        <div>
+          <dt>6</dt>
+          <dd>productos full stack entregados</dd>
+        </div>
+        <div>
+          <dt>IA</dt>
+          <dd>integrada en flujos de negocio críticos</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- CATEGORY GRID -->
+    <section class="section section-border-top">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Áreas de trabajo</span>
+          <h2>En qué puedo ayudar a tu equipo</h2>
+        </div>
+
+        <div class="category-grid">
+          @for (cat of categories; track cat.id) {
+            <a class="category-card" [routerLink]="['/proyectos']" [queryParams]="{ categoria: cat.id }">
+              <app-media-placeholder kind="image" ratio="4 / 3"></app-media-placeholder>
+              <span class="category-card__label">{{ cat.label }}</span>
+            </a>
+          }
+        </div>
+
+        <a class="btn" routerLink="/proyectos">Ver todos los proyectos →</a>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section class="section section-border-top">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Trabajo seleccionado</span>
+          <h2>Proyectos destacados</h2>
+        </div>
+
+        <div class="project-list">
+          @for (project of featuredProjects; track project.slug) {
+            <a class="project-row" [routerLink]="['/proyectos', project.slug]">
+              <app-media-placeholder kind="video" ratio="16 / 10"></app-media-placeholder>
+              <div class="project-row__body">
+                <span class="project-row__meta">{{ project.client }} · {{ project.period }}</span>
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.summary }}</p>
+                <div class="project-row__tags">
+                  @for (tech of project.stack.slice(0, 4); track tech) {
+                    <span class="tag">{{ tech }}</span>
+                  }
+                </div>
+              </div>
+            </a>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES TEASER -->
+    <section class="section section-border-top">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Cómo trabajo</span>
+          <h2>Lo que le aporto a tu organización</h2>
+        </div>
+
+        <div class="service-grid">
+          @for (service of services; track service.title) {
+            <div class="service-card">
+              <h3>{{ service.title }}</h3>
+              <p>{{ service.description }}</p>
+            </div>
+          }
+        </div>
+
+        <a class="btn" routerLink="/servicios">Ver todos los servicios →</a>
+      </div>
+    </section>
+
   </div>
 }

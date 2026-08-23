@@ -1,0 +1,58 @@
+<section class="page-hero container">
+  <span class="eyebrow">Servicios</span>
+  <h1>Lo que le aporto a las empresas de Medellín.</h1>
+  <p class="page-hero__lead">
+    No vendo horas de código: resuelvo problemas de negocio con software bien construido.
+    Estas son las áreas donde puedo integrarme a tu equipo o llevar un proyecto de punta a punta.
+  </p>
+</section>
+
+<section class="section section-border-top">
+  <div class="container">
+    <div class="services-list">
+      @for (service of services; track service.title; let i = $index) {
+        <article class="service-row">
+          <span class="service-row__index">{{ (i + 1) | number: '2.0' }}</span>
+          <div class="service-row__body">
+            <h2>{{ service.title }}</h2>
+            <p>{{ service.description }}</p>
+            <div class="service-row__points">
+              @for (point of service.points; track point) {
+                <span class="tag">{{ point }}</span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section-border-top">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Caja de herramientas</span>
+      <h2>Stack técnico</h2>
+    </div>
+
+    <div class="skills-grid">
+      @for (group of skills; track group.label) {
+        <div class="skills-group">
+          <h3>{{ group.label }}</h3>
+          <ul>
+            @for (item of group.items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section-border-top">
+  <div class="container cta-banner">
+    <h2>¿Tu empresa necesita resolver algo parecido?</h2>
+    <a class="btn btn-solid" routerLink="/contacto">Conversemos</a>
+  </div>
+</section>

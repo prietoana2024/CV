@@ -1,0 +1,69 @@
+<section class="page-hero container">
+  <span class="eyebrow">Experiencia</span>
+  <h1>Más de 4 años resolviendo problemas de negocio con código.</h1>
+  <p class="page-hero__lead">
+    Full stack, orientada a producción y con foco reciente en integrar inteligencia artificial
+    a flujos críticos — no como experimento, sino como parte del sistema que factura, agenda o
+    mueve inventario.
+  </p>
+</section>
+
+<section class="section section-border-top">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Trayectoria</span>
+      <h2>Experiencia profesional</h2>
+    </div>
+
+    <div class="timeline">
+      @for (job of experience; track job.company) {
+        <article class="timeline-item">
+          <div class="timeline-item__head">
+            <span class="timeline-item__period">
+              {{ job.period }}
+              @if (job.current) { <span class="timeline-item__badge">Actual</span> }
+            </span>
+            <h3>{{ job.role }}</h3>
+            <span class="timeline-item__company">{{ job.company }}</span>
+          </div>
+          <ul class="timeline-item__list">
+            @for (a of job.achievements; track a) {
+              <li>{{ a }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section-border-top">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Formación</span>
+      <h2>Educación</h2>
+    </div>
+
+    <div class="education-grid">
+      @for (edu of education; track edu.title) {
+        <article class="education-card">
+          <span class="education-card__period">{{ edu.period }}</span>
+          <h3>{{ edu.title }}</h3>
+          <span class="education-card__institution">{{ edu.institution }}</span>
+          <ul>
+            @for (d of edu.details; track d) {
+              <li>{{ d }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section-border-top">
+  <div class="container cta-banner">
+    <h2>¿Buscas este perfil en tu equipo?</h2>
+    <a class="btn btn-solid" routerLink="/contacto">Hablemos</a>
+  </div>
+</section>
